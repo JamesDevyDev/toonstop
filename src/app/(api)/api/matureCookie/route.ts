@@ -22,7 +22,7 @@ export const POST = async () => {
     const response = NextResponse.json({ value: newValue });
 
     response.cookies.set("mature", newValue, {
-        httpOnly: true,
+        httpOnly: false,
         secure: true,
         path: "/",
         maxAge: 60 * 60 * 24 * 14, 
