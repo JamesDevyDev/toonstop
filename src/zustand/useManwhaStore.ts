@@ -28,15 +28,13 @@ const useManwhaStore = create<ManwhaStore>((set, get) => ({
     homeData: [],
     getHomeData: async ({ page }: { page: string }) => {
 
-        let mature = get().mature
         try {
-            const res = await fetch(`/api/home/${page}/?mature=${mature}`)
+            const res = await fetch(`/api/home/${page}`)
             const data = await res.json()
 
             set({ pagination: data.pagination })
             set({ homeData: data.data })
-            const last = get().pagination
-            console.log(last)
+          
         } catch (error) {
             console.log(error)
             return null

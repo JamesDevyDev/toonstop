@@ -1,4 +1,5 @@
 import { NextResponse } from "next/server"
+import { cookies } from "next/headers"
 
 export const GET = async (request: Request, {
     params
@@ -6,8 +7,10 @@ export const GET = async (request: Request, {
     params: Promise<{ page: string }>
 }) => {
 
-    const url = new URL(request.url)
-    const mature = url.searchParams.get('mature') 
+    const cookieStore = await cookies()
+    const myCookie = cookieStore.get('mature')
+
+    const mature = myCookie?.value
     
     const { page } = await params
     const res = await fetch(`https://scrapergo.vercel.app/api/manwha/home/${page}/?mature=${mature}`)

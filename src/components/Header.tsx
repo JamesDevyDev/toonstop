@@ -1,5 +1,5 @@
 'use client'
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import Link from 'next/link'
 import useManwhaStore from '@/zustand/useManwhaStore'
 
@@ -9,8 +9,24 @@ import useManwhaStore from '@/zustand/useManwhaStore'
 
 const Header = () => {
 
-    const mature = useManwhaStore((state) => state.mature)
-    const setMature = useManwhaStore((state) => state.setMature)
+    const { mature, setMature } = useManwhaStore()
+
+    useEffect(() => {
+        const fetchCookie = async () => {
+            const res = await fetch('/api/matureCookie');
+            const data = await res.json();
+        }
+        fetchCookie()
+    }, [])
+
+    const matureSet = async () => {
+        const res = await fetch('/api/matureCookie', {
+            method: 'POST'
+        });
+        const data = await res.json();
+        setMature(data?.value)
+
+    };
 
     return (
         <div>
@@ -25,12 +41,10 @@ const Header = () => {
 
                 <div
                     onClick={() => {
-                        const newValue = mature === 1 ? 0 : 1
-                        setMature(newValue)
-                        console.log('Mature set to:', newValue)
+                        matureSet()
                     }}
-                    className={`cursor-pointer w-[80px] h-[30px]  border  rounded-lg text-[12px] flex items-center justify-center ${!mature ? 'bg-green-500/10 border-green-500 text-green-500' : 'bg-red-500/10 border-red-500 text-red-500'} `}>
-                    {`NSFW ${!mature ? 'OFF' : 'ON'}`} •
+                    className={`cursor-pointer w-[80px] h-[30px]  border  rounded-lg text-[12px] flex items-center justify-center ${mature == 0 ? 'bg-green-500/10 border-green-500 text-green-500' : 'bg-red-500/10 border-red-500 text-red-500'} `}>
+                    {`NSFW ${mature == 0 ? 'OFF' : 'ON'}`} •
                 </div>
 
             </div>
