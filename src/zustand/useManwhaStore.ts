@@ -4,6 +4,9 @@ import { DetailsData } from '@/types/details/DetailsData'
 import { ChapterData } from '@/types/chapter/ChapterData'
 
 interface ManwhaStore {
+    mature: number,
+    setMature: (value: 0 | 1) => void
+
     homeData: HomeData[],
     getHomeData: ({ page }: { page: string }) => Promise<any>
 
@@ -15,10 +18,15 @@ interface ManwhaStore {
 }
 
 const useManwhaStore = create<ManwhaStore>((set, get) => ({
+    mature: 0,
+    setMature: (value) => set({ mature: value }),
+
     homeData: [],
-    getHomeData: async ({ page }: { page: String }) => {
+    getHomeData: async ({ page }: { page: string }) => {
+
+        let mature = get().mature
         try {
-            const res = await fetch(`/api/home/${page}`)
+            const res = await fetch(`/api/home/${page}/?mature=${mature}`)
             const data = await res.json()
             set({ homeData: data })
 
