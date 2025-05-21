@@ -7,10 +7,11 @@ export const GET = async (request: Request, {
 }) => {
 
     const url = new URL(request.url)
-    const mature = url.searchParams.get('mature') // this will be "0" or "1"
+    const mature = url.searchParams.get('mature') 
+    
     const { page } = await params
     const res = await fetch(`https://scrapergo.vercel.app/api/manwha/home/${page}/?mature=${mature}`)
     const data = await res.json()
 
-    return NextResponse.json(data.data)
+    return NextResponse.json(data)
 }

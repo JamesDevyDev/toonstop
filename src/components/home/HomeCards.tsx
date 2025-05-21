@@ -40,11 +40,3 @@ const HomeCards = () => {
 }
 
 export default HomeCards
-
-// < Link href = {`/chapter/${manwhaid}/${chapter?.chapterId}`} key = { index } className = 'rounded-lg overflow-hidden' >
-//                           <div className='w-full h-[60px] flex items-center flex-col justify-center relative group'>
-//                               <div className='font-bold group-hover:text-[#d7af57]'>{chapter?.name}</div>
-//                               <span className='text-[12px] text-zinc-500'>{chapter?.releaseDate}</span>
-//                           </div>
-//                           <div className='w-full bg-[#d7af57] h-[3px]'></div>
-//                       </Link >

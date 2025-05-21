@@ -7,6 +7,8 @@ interface ManwhaStore {
     mature: number,
     setMature: (value: 0 | 1) => void
 
+    pagination: number[] | null,
+
     homeData: HomeData[],
     getHomeData: ({ page }: { page: string }) => Promise<any>
 
@@ -21,6 +23,8 @@ const useManwhaStore = create<ManwhaStore>((set, get) => ({
     mature: 0,
     setMature: (value) => set({ mature: value }),
 
+    pagination: [],
+
     homeData: [],
     getHomeData: async ({ page }: { page: string }) => {
 
@@ -28,8 +32,11 @@ const useManwhaStore = create<ManwhaStore>((set, get) => ({
         try {
             const res = await fetch(`/api/home/${page}/?mature=${mature}`)
             const data = await res.json()
-            set({ homeData: data })
 
+            set({ pagination: data.pagination })
+            set({ homeData: data.data })
+            const last = get().pagination
+            console.log(last)
         } catch (error) {
             console.log(error)
             return null
