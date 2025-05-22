@@ -1,5 +1,5 @@
 'use client'
-
+import Link from "next/link"
 import { useEffect } from "react"
 import { useState } from "react"
 import useManwhaStore from "@/zustand/useManwhaStore"
@@ -59,8 +59,32 @@ const ChapterPage = ({ manwhaid, page }: { manwhaid: string, page: string }) => 
                         </div>
                     ))
                 )}
+
+
             </div>
 
+            <div className='w-full flex items-center justify-center mt-[40px] flex-col'>
+                <div className="relative inline-block text-[22px]">
+                    {isLoading ? (
+
+                        <>
+                            <span className="skeleton h-8 w-60 bg-gray-800 inline-block rounded"></span>
+                            <div className="absolute left-0 right-0 -bottom-1 h-1 bg-[#d7af57] rounded-lg"></div>
+                        </>
+
+                    ) : (
+                        <>
+                            <span className="text-white font-bold uppercase">{chapterData?.title}</span>
+                            <div className="absolute left-0 right-0 -bottom-1 h-1 bg-[#d7af57] rounded-lg"></div>
+                        </>
+                    )}
+                </div>
+
+                {!isLoading && <div className='w-[200px] flex items-center justify-around font-bold text-black pt-[25px] '>
+                    <Link href={`/chapter/${manwhaid}/${parseInt(page) - 1}`} className='w-[50px] h-[50px] bg-[#d7af57] flex items-center justify-center'>{`<`}</Link>
+                    <Link href={`/chapter/${manwhaid}/${parseInt(page) + 1}`} className='w-[50px] h-[50px] bg-[#d7af57] flex items-center justify-center'>{`>`}</Link>
+                </div>}
+            </div>
         </div>
     )
 }
