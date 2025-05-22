@@ -15,6 +15,21 @@ const HomeCards = () => {
     <div className="w-full grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-4">
       {homeData.map((card, index) => (
         <div key={index} className="aspect-[3/5]  w-full rounded-md relative flex-shrink-0 ">
+
+          {card?.status !== '' && (
+            <div
+              className={`z-[50] text-[12px] px-[2%] py-[1%] rounded-lg absolute font-bold ${card?.status === "HOT"
+                  ? "bg-red-500"
+                  : card?.status === "NEW"
+                    ? "bg-yellow-500"
+                    : "bg-gray-500"
+                }`}
+            >
+              {card?.status}
+            </div>
+          )}
+
+
           <Link href={`/details/${card.manwhaId}`}>
             <div className='w-full h-[250px] overflow-hidden rounded-lg group'>
               <img src={card.image} className='w-full h-full group-hover:scale-110  duration-300' />

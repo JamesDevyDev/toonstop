@@ -1,5 +1,6 @@
 export interface DetailsData {
     title: string
+    status:string
     image: string
     info: DetailsInfo[] 
     summary: string

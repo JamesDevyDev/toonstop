@@ -16,7 +16,7 @@ const DetailsPage = ({ manwhaid }: { manwhaid: string }) => {
         const fetchData = async () => {
             setIsLoading(true)
             const data = await getDetailsData({ manwhaid })
-          
+
             if (data?.error) {
                 router.push('/home/1')
                 return
@@ -53,9 +53,23 @@ const DetailsPage = ({ manwhaid }: { manwhaid: string }) => {
 
                         {/* Poster */}
                         <div className='w-[200px] h-[300px] flex-shrink-0 rounded-lg overflow-hidden'>
+                            {!isLoading && (detailsData?.status !== '' && (
+                                <div
+                                    className={`text-[12px] px-[15px] py-[5px] rounded-lg absolute font-bold ${detailsData?.status === "HOT"
+                                        ? "bg-red-500"
+                                        : detailsData?.status === "NEW"
+                                            ? "bg-yellow-500"
+                                            : "bg-gray-500"
+                                        }`}
+                                >
+                                    {detailsData?.status}
+                                </div>
+                            ))}
                             {isLoading
                                 ? <div className="skeleton h-full w-full bg-gray-900"></div>
-                                : <img src={detailsData?.image} className='w-full h-full' />}
+                                : <img src={detailsData?.image} className='w-full h-full' />
+
+                            }
                         </div>
 
                         {/* Info */}
@@ -63,8 +77,11 @@ const DetailsPage = ({ manwhaid }: { manwhaid: string }) => {
                             <div className='text-white font-bold text-[40px]'>
                                 {isLoading
                                     ? <span className="skeleton h-11 w-[200px] bg-gray-800 inline-block"></span>
-                                    : detailsData?.title}
+                                    : detailsData?.title
+                                }
                             </div>
+
+
 
                             <div className='text-white text-[18px]'>
                                 <div className='text-zinc-500'>
