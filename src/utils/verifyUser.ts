@@ -1,0 +1,21 @@
+import { cookies } from 'next/headers';
+import jwt from 'jsonwebtoken';
+import User from './model/Users';
+import connectDb from './connectDb';
+
+export const getAuthenticatedUser = async () => {
+    await connectDb()
+
+    const cookieStore = await cookies();
+    const token = cookieStore.get('jwt')?.value;
+    if (!token) return 'Error no cookies have found'
+
+    try {
+        const decoded = jwt.verify(token, process.env.NEXT_JWT_SECRET!) as { id: string };
+        const user = await User.findById(decoded.id).select('-password');
+        if (!user) return 'No user have found'
+        return user;
+    } catch (err) {
+        throw new Error('Invalid token');
+    }
+};

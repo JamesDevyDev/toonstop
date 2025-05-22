@@ -1,6 +1,8 @@
 import { NextResponse } from "next/server"
 import { cookies } from "next/headers"
 
+import connectDb from "@/utils/connectDb"
+
 export const GET = async (request: Request, {
     params
 }: {
