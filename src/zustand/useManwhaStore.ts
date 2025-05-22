@@ -71,7 +71,7 @@ const useManwhaStore = create<ManwhaStore>((set, get) => ({
             const res = await fetch(`/api/chapter/${manwhaid}/${page}`)
             const data = await res.json()
             if (!res.ok) {
-                console.log('Details Not Found.');
+                console.log('Chapters Not Found.');
                 return { error: true };
             }
 
