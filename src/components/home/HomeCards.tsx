@@ -18,7 +18,7 @@ const HomeCards = () => {
 
           {card?.status !== '' && (
             <div
-              className={`z-[50] text-[12px] px-[2%] py-[1%] rounded-lg absolute font-bold ${card?.status === "HOT"
+              className={`z-[1] text-[12px] px-[2%] py-[1%] rounded-lg absolute font-bold ${card?.status === "HOT"
                   ? "bg-red-500"
                   : card?.status === "NEW"
                     ? "bg-yellow-500"
@@ -31,8 +31,8 @@ const HomeCards = () => {
 
 
           <Link href={`/details/${card.manwhaId}`}>
-            <div className='w-full h-[250px] overflow-hidden rounded-lg group'>
-              <img src={card.image} className='w-full h-full group-hover:scale-110  duration-300' />
+            <div className='w-full h-[250px] overflow-hidden rounded-lg group z-[1]'>
+              <img src={card.image} className=' w-full h-full group-hover:scale-110  duration-300' />
             </div>
           </Link>
           <div className='w-full  relative flex items-start justify-center flex-col '>
