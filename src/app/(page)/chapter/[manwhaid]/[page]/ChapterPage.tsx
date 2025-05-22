@@ -80,9 +80,9 @@ const ChapterPage = ({ manwhaid, page }: { manwhaid: string, page: string }) => 
                     )}
                 </div>
 
-                {!isLoading && <div className='w-[200px] flex items-center justify-around font-bold text-black pt-[25px] '>
-                    <Link href={`/chapter/${manwhaid}/${parseInt(page) - 1}`} className='w-[50px] h-[50px] bg-[#d7af57] flex items-center justify-center'>{`<`}</Link>
-                    <Link href={`/chapter/${manwhaid}/${parseInt(page) + 1}`} className='w-[50px] h-[50px] bg-[#d7af57] flex items-center justify-center'>{`>`}</Link>
+                {!isLoading && <div className='w-[150px] flex items-center justify-around font-bold text-black pt-[25px] '>
+                    <Link href={`/chapter/${manwhaid}/${parseInt(page) - 1}`} className='w-[50px] h-[50px] bg-[#d7af57] flex items-center justify-center rounded-lg'>{`<`}</Link>
+                    <Link href={`/chapter/${manwhaid}/${parseInt(page) + 1}`} className='w-[50px] h-[50px] bg-[#d7af57] flex items-center justify-center rounded-lg'>{`>`}</Link>
                 </div>}
             </div>
         </div>
