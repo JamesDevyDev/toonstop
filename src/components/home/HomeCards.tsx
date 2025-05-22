@@ -6,6 +6,11 @@ const HomeCards = () => {
 
   const { homeData } = useManwhaStore()
 
+  if (!Array.isArray(homeData)) {
+    console.log(homeData)
+    return <div className="text-white">Loading...</div>;
+  }
+
   return (
     <div className="w-full grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-4">
       {homeData.map((card, index) => (

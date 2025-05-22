@@ -3,17 +3,22 @@
 import { useEffect } from "react"
 import { useState } from "react"
 import useManwhaStore from "@/zustand/useManwhaStore"
+import { useRouter } from "next/navigation"
 
 const ChapterPage = ({ manwhaid, page }: { manwhaid: string, page: string }) => {
     const { getChapterData, chapterData } = useManwhaStore()
 
     const [isLoading, setIsLoading] = useState(true)
-
+    const router = useRouter()
 
     useEffect(() => {
         const fetchData = async () => {
             setIsLoading(true);
-            await getChapterData({ manwhaid, page });
+            const data = await getChapterData({ manwhaid, page });
+            if (data?.error) {
+                router.push('/home/1')
+                return
+            }
             setIsLoading(false);
         };
 

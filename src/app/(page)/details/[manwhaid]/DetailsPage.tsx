@@ -3,16 +3,24 @@
 import { useEffect, useState } from "react"
 import useManwhaStore from "@/zustand/useManwhaStore"
 import Link from "next/link"
+import { useRouter } from "next/navigation"
+
 
 const DetailsPage = ({ manwhaid }: { manwhaid: string }) => {
     const { getDetailsData, detailsData } = useManwhaStore()
     const [isReversed, setIsReversed] = useState(false)
     const [isLoading, setIsLoading] = useState(true)
+    const router = useRouter()
 
     useEffect(() => {
         const fetchData = async () => {
             setIsLoading(true)
-            await getDetailsData({ manwhaid })
+            const data = await getDetailsData({ manwhaid })
+          
+            if (data?.error) {
+                router.push('/home/1')
+                return
+            }
             setIsLoading(false)
         }
 

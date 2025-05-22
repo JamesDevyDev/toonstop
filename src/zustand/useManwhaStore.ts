@@ -2,6 +2,7 @@ import { create } from 'zustand'
 import { HomeData } from '@/types/home/HomeData'
 import { DetailsData } from '@/types/details/DetailsData'
 import { ChapterData } from '@/types/chapter/ChapterData'
+import { NextResponse } from 'next/server'
 
 interface ManwhaStore {
     mature: number,
@@ -31,10 +32,14 @@ const useManwhaStore = create<ManwhaStore>((set, get) => ({
         try {
             const res = await fetch(`/api/home/${page}`)
             const data = await res.json()
+            if (!res.ok) {
+                console.log('Home Not Found.');
+                return { error: true };
+            }
 
             set({ pagination: data.pagination })
             set({ homeData: data.data })
-          
+
         } catch (error) {
             console.log(error)
             return null
@@ -45,9 +50,15 @@ const useManwhaStore = create<ManwhaStore>((set, get) => ({
         try {
             const res = await fetch(`/api/details/${manwhaid}`)
             const data = await res.json()
-            set({ detailsData: data })
+            if (!res.ok) {
+                console.log('Details Not Found.');
+                return { error: true };
+            }
 
+            set({ detailsData: data })
             return data
+
+
 
         } catch (error) {
             console.log(error)
@@ -59,8 +70,13 @@ const useManwhaStore = create<ManwhaStore>((set, get) => ({
         try {
             const res = await fetch(`/api/chapter/${manwhaid}/${page}`)
             const data = await res.json()
-            set({ chapterData: data })
+            if (!res.ok) {
+                console.log('Details Not Found.');
+                return { error: true };
+            }
 
+            set({ chapterData: data })
+            return data
 
         } catch (error) {
             console.log(error)

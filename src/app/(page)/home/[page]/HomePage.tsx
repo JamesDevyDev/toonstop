@@ -4,19 +4,25 @@ import useManwhaStore from "@/zustand/useManwhaStore"
 import HomeCards from "@/components/home/HomeCards"
 import HomeCardsLoading from "@/components/loading/home/HomeCardsLoading"
 import Link from "next/link"
-
+import { useRouter } from "next/navigation"
 
 const HomePage = ({ page }: { page: string }) => {
 
     const [loading, setLoading] = useState<boolean>(true)
     const { getHomeData, mature, pagination } = useManwhaStore()
+    const router = useRouter()
+
 
     let currentPage = parseInt(page)
 
     useEffect(() => {
         const fetchData = async () => {
             setLoading(true)
-            await getHomeData({ page })
+            const data = await getHomeData({ page })
+            if (data?.error) {
+                router.push('/home/1')
+                return
+            }
             setLoading(false)
         }
 
