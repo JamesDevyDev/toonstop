@@ -16,7 +16,7 @@ const ChapterPage = ({ manwhaid, page }: { manwhaid: string, page: string }) => 
             setIsLoading(true);
             const data = await getChapterData({ manwhaid, page });
             if (data?.error) {
-                router.push('/home/1')
+                router.push(`/details/${manwhaid}`)
                 return
             }
             setIsLoading(false);
