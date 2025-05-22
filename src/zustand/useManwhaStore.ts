@@ -2,7 +2,6 @@ import { create } from 'zustand'
 import { HomeData } from '@/types/home/HomeData'
 import { DetailsData } from '@/types/details/DetailsData'
 import { ChapterData } from '@/types/chapter/ChapterData'
-import { NextResponse } from 'next/server'
 
 interface ManwhaStore {
     mature: number,
