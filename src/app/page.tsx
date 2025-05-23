@@ -1,11 +1,27 @@
-
+'use client'
+import { useEffect } from "react";
 import Link from "next/link";
+import useManwhaStore from "@/zustand/useManwhaStore"
+
 
 //Color palletes
 //yellow - #d7af57
 //black - black
 
 export default function Home() {
+  const { getVisitCount } = useManwhaStore()
+
+  // homepage add count
+  useEffect(() => {
+    let addVisitCount = async () => {
+      let res = await fetch('/site/count/visit', {
+        method: 'POST'
+      })
+    }
+    addVisitCount()
+    getVisitCount()
+  }, [])
+
   return (
     <div className='h-[100vh] w-[100vw] overflow-x-hidden bg-black relative '>
 
