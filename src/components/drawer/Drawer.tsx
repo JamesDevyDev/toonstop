@@ -14,7 +14,7 @@ const Drawer = () => {
 
 
     const { visitCount, readCount, getVisitCount, getReadCount } = useManwhaStore()
-    const { authUser, getAuthUserFunction, LogoutFunction} = useAuthStore()
+    const { authUser, getAuthUserFunction, LogoutFunction } = useAuthStore()
 
     useEffect(() => {
         const fetchCounts = async () => {
@@ -39,9 +39,9 @@ const Drawer = () => {
             </div>
             <div className="drawer-side z-[50]">
                 <label htmlFor="my-drawer" aria-label="close sidebar" className="drawer-overlay"></label>
-                <ul className="menu bg-[#d7af57] text-base-content min-h-full w-80 p-4 ">
+                <ul className="menu bg-[#d7af57] text-base-content min-h-full w-80 px-4 ">
 
-                    <div className='w-full h-[80px] flex items-center justify-center'>
+                    <div className='w-full h-[100px] flex items-center justify-center '>
                         <div className='w-[50%] h-full'>
                             <img src='/assets/logo.png' className='h-full w-full relative' />
                         </div>
@@ -80,7 +80,7 @@ const Drawer = () => {
                     </div>
 
                     {!authUser &&
-                        <div className='w-full h-[100px]  flex items-center justify-center gap-[10px] flex-row'>
+                        <div className='w-full h-[100px]  flex items-center justify-center gap-[10px] flex-row '>
                             <Link href='/auth/register' className='w-[100px] h-[30px] flex items-center justify-center rounded-md bg-black/50 border-2 text-black hover:bg-[#d7af57] cursor-pointer hover:font-bold'>
                                 Register
                             </Link>
@@ -90,12 +90,22 @@ const Drawer = () => {
                         </div>
                     }
 
-                    {authUser && 
-                    <div>
-                        Welcome {authUser?.username}
+                    {authUser &&
+                        <div className='w-full   flex items-center justify-center  flex-col mt-[25px]'>
 
-                        <div onClick={()=> LogoutFunction()}>Logout</div>
-                    </div>}
+                            <div className="avatar">
+                                <div className="w-19 rounded-full">
+                                    <img src={authUser?.avatar} />
+                                </div>
+                            </div>
+                            <div className='w-full flex items-center justify-center font-bold text-black text-[22px] pb-[10px]'>{authUser?.username}</div>
+
+
+                            <div className='w-full  flex flex-col text-[15px] font-bold'>
+                                <div className='text-black w-full h-[50px] flex items-center justify-start cursor-pointer border-t border-black hover:text-black/50 duration-200'>User Settings</div>
+                                <div onClick={() => LogoutFunction()} className='text-black w-full h-[50px] flex items-center justify-start cursor-pointer border-t border-b border-black hover:text-black/50 duration-200'>Logout</div>
+                            </div>
+                        </div>}
 
 
 

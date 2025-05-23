@@ -1,6 +1,10 @@
 import mongoose from "mongoose";
 
 const userSchema = new mongoose.Schema({
+    avatar: {
+        type: String,
+        default: '/assets/noAvatar.png'
+    },
     username: {
         type: String,
         required: true
