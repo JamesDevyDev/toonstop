@@ -65,7 +65,7 @@ const Page = () => {
                         type="text"
                         autoComplete="username"
                         id="email"
-                        placeholder="e.g. johndoe@example.com"
+                        placeholder="Enter your username"
                         className="w-full px-4 py-2 bg-[#161b22] text-white border border-[#30363d] rounded focus:outline-none"
                         value={username}
                         onChange={(e) => setUsername(e.target.value)}
