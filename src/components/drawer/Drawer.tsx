@@ -1,7 +1,10 @@
 import React, { useEffect, useState } from 'react'
 import { Menu } from 'lucide-react'
-
 import useManwhaStore from '@/zustand/useManwhaStore'
+import useAuthStore from '@/zustand/useAuthStore'
+
+import Link from 'next/link'
+
 
 const Drawer = () => {
 
@@ -11,6 +14,7 @@ const Drawer = () => {
 
 
     const { visitCount, readCount, getVisitCount, getReadCount } = useManwhaStore()
+    const { authUser, getAuthUserFunction, LogoutFunction} = useAuthStore()
 
     useEffect(() => {
         const fetchCounts = async () => {
@@ -21,7 +25,7 @@ const Drawer = () => {
             setIsLoadingViews(false);
             setIsLoadingReads(false);
         };
-
+        getAuthUserFunction()
         fetchCounts();
     }, []);
 
@@ -74,6 +78,26 @@ const Drawer = () => {
                             }
                         </div>
                     </div>
+
+                    {!authUser &&
+                        <div className='w-full h-[100px]  flex items-center justify-center gap-[10px] flex-row'>
+                            <Link href='/auth/register' className='w-[100px] h-[30px] flex items-center justify-center rounded-md bg-black/50 border-2 text-black hover:bg-[#d7af57] cursor-pointer hover:font-bold'>
+                                Register
+                            </Link>
+                            <Link href='/auth/login' className='w-[100px] h-[30px] flex items-center justify-center rounded-md bg-black/50 border-2 text-black hover:bg-[#d7af57] cursor-pointer hover:font-bold'>
+                                Login
+                            </Link>
+                        </div>
+                    }
+
+                    {authUser && 
+                    <div>
+                        Welcome {authUser?.username}
+
+                        <div onClick={()=> LogoutFunction()}>Logout</div>
+                    </div>}
+
+
 
                 </ul>
             </div>

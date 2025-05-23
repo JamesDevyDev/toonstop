@@ -96,7 +96,6 @@ const useManwhaStore = create<ManwhaStore>((set, get) => ({
         let res = await fetch('/site/count/visit')
         if (!res.ok) throw new Error("Failed to fetch visit count");
         let data = await res.json()
-        console.log(data)
         set({ visitCount: data })
     },
     readCount: 0,
@@ -104,7 +103,6 @@ const useManwhaStore = create<ManwhaStore>((set, get) => ({
         let res = await fetch('/site/count/read')
         if (!res.ok) throw new Error("Failed to fetch read count");
         let data = await res.json()
-        console.log(data)
         set({ readCount: data })
     },
 
