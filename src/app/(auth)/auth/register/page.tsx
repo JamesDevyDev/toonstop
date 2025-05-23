@@ -17,6 +17,17 @@ const Page = () => {
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault()
 
+        const hasInvalidChars = /<[^>]*>|[<>]/.test(username)
+        if (hasInvalidChars) {
+            setError('Username contains invalid characters (e.g., <, >, or HTML tags)')
+            return
+        }
+
+        if (password.length < 6) {
+            setError('Password must be at least 6 characters long')
+            return
+        }
+
         if (password !== confirmPassword) {
             setError('Passwords do not match')
             return
@@ -24,7 +35,10 @@ const Page = () => {
 
         setError('')
         const data = await RegisterFunction({ username, password })
-        if (data?.error) setError(data?.error)
+        if (data?.error) {
+            setError(data?.error)
+            return
+        }
 
         router.push('/home/1')
     }

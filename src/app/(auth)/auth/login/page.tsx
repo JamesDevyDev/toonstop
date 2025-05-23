@@ -16,8 +16,12 @@ const Page = () => {
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault()
 
+        setError('')
         const data = await LoginFunction({ username, password })
-        if (data?.error) setError(data?.error)
+        if (data?.error) {
+            setError(data?.error)
+            return
+        }
         console.log(data)
         router.push('/home/1')
     }
@@ -33,7 +37,7 @@ const Page = () => {
                 </Link>
 
                 <p className="text-center text-sm text-black">
-                    Register to Toonstop with your username or email address
+                    Login to Toonstop with your username or email address
                 </p>
 
                 <div>
