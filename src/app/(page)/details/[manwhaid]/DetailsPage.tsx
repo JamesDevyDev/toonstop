@@ -73,7 +73,7 @@ const DetailsPage = ({ manwhaid }: { manwhaid: string }) => {
                         </div>
 
                         {/* Info */}
-                        <div className='h-[300px] w-full max-w-[700px] bg-gray-900/80 rounded-lg px-[30px] py-[15px] flex flex-col justify-around'>
+                        <div className='min-h-[300px] w-full max-w-[700px] bg-gray-900/80 rounded-lg px-[30px] py-[15px] flex flex-col justify-around'>
                             <div className='text-white font-bold text-[40px]'>
                                 {isLoading
                                     ? <span className="skeleton h-11 w-[200px] bg-gray-800 inline-block"></span>
