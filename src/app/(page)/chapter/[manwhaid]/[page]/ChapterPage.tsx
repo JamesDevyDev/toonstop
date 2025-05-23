@@ -5,6 +5,9 @@ import { useState } from "react"
 import useManwhaStore from "@/zustand/useManwhaStore"
 import { useRouter } from "next/navigation"
 
+import { ArrowBigRight, ArrowBigLeft } from 'lucide-react';
+
+
 const ChapterPage = ({ manwhaid, page }: { manwhaid: string, page: string }) => {
     const router = useRouter()
     const [isLoading, setIsLoading] = useState(true)
@@ -91,8 +94,8 @@ const ChapterPage = ({ manwhaid, page }: { manwhaid: string, page: string }) => 
                 </div>
 
                 {!isLoading && <div className='w-[150px] flex items-center justify-around font-bold text-black pt-[25px] '>
-                    <Link href={`/chapter/${manwhaid}/${parseInt(page) - 1}`} className='w-[50px] h-[50px] bg-[#d7af57] flex items-center justify-center rounded-lg'>{`<`}</Link>
-                    <Link href={`/chapter/${manwhaid}/${parseInt(page) + 1}`} className='w-[50px] h-[50px] bg-[#d7af57] flex items-center justify-center rounded-lg'>{`>`}</Link>
+                    <Link href={`/chapter/${manwhaid}/${parseInt(page) - 1}`} className='w-[50px] h-[50px] bg-[#d7af57] flex items-center justify-center rounded-lg'><ArrowBigLeft/></Link>
+                    <Link href={`/chapter/${manwhaid}/${parseInt(page) + 1}`} className='w-[50px] h-[50px] bg-[#d7af57] flex items-center justify-center rounded-lg'><ArrowBigRight/></Link>
                 </div>}
             </div>
         </div>
