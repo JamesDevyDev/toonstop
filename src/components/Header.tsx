@@ -2,7 +2,7 @@
 import React, { useEffect, useState } from 'react'
 import Link from 'next/link'
 import useManwhaStore from '@/zustand/useManwhaStore'
-import Drawer from './loading/drawer/Drawer'
+import Drawer from './drawer/Drawer'
 
 //Spacing px-[5%] md:px-[10%] lg:px-[20%]
 

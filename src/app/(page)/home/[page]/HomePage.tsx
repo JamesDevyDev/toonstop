@@ -6,12 +6,22 @@ import HomeCardsLoading from "@/components/loading/home/HomeCardsLoading"
 import Link from "next/link"
 import { useRouter } from "next/navigation"
 
+
 const HomePage = ({ page }: { page: string }) => {
-
-    const [loading, setLoading] = useState<boolean>(true)
-    const { getHomeData, mature, pagination } = useManwhaStore()
     const router = useRouter()
+    const [loading, setLoading] = useState<boolean>(true)
+    const { getHomeData, mature, pagination, getVisitCount } = useManwhaStore()
 
+    // homepage add count
+    useEffect(() => {
+        let addVisitCount = async () => {
+            let res = await fetch('/site/count/visit', {
+                method: 'POST'
+            })
+        }
+        addVisitCount()
+        getVisitCount()
+    }, [])
 
     let currentPage = parseInt(page)
 

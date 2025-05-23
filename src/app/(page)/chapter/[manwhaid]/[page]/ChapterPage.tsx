@@ -6,10 +6,20 @@ import useManwhaStore from "@/zustand/useManwhaStore"
 import { useRouter } from "next/navigation"
 
 const ChapterPage = ({ manwhaid, page }: { manwhaid: string, page: string }) => {
-    const { getChapterData, chapterData } = useManwhaStore()
-
-    const [isLoading, setIsLoading] = useState(true)
     const router = useRouter()
+    const [isLoading, setIsLoading] = useState(true)
+    const { getChapterData, chapterData, getReadCount } = useManwhaStore()
+    
+    // read add count
+    useEffect(() => {
+        let addReadCount = async () => {
+            let res = await fetch('/site/count/read', {
+                method: 'POST'
+            })
+        }
+        addReadCount()
+        getReadCount()
+    }, [])
 
     useEffect(() => {
         const fetchData = async () => {
