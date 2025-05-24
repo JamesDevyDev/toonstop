@@ -123,6 +123,7 @@ const Drawer = () => {
 
 
                             <div className='w-full  flex flex-col text-[15px] font-bold'>
+                                <Link href='/likedPage' className='text-black w-full h-[50px] flex items-center justify-start cursor-pointer border-t border-black hover:text-black/50 duration-200'>Liked Manwha</Link>
                                 <div className='text-black w-full h-[50px] flex items-center justify-start cursor-pointer border-t border-black hover:text-black/50 duration-200'>User Settings</div>
                                 <div onClick={() => LogoutFunction()} className='text-black w-full h-[50px] flex items-center justify-start cursor-pointer border-t border-b border-black hover:text-black/50 duration-200'>Logout</div>
                             </div>

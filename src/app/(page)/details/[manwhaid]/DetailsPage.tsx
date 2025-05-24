@@ -2,12 +2,18 @@
 
 import { useEffect, useState } from "react"
 import useManwhaStore from "@/zustand/useManwhaStore"
+import useAuthStore from "@/zustand/useAuthStore"
 import Link from "next/link"
 import { useRouter } from "next/navigation"
+import { Heart, HeartOff } from 'lucide-react'
+
 
 
 const DetailsPage = ({ manwhaid }: { manwhaid: string }) => {
     const { getDetailsData, detailsData } = useManwhaStore()
+
+    const { authUser, getAuthUserFunction } = useAuthStore()
+
     const [isReversed, setIsReversed] = useState(false)
     const [isLoading, setIsLoading] = useState(true)
     const router = useRouter()
@@ -30,6 +36,23 @@ const DetailsPage = ({ manwhaid }: { manwhaid: string }) => {
     const chaptersToShow = isReversed
         ? [...(detailsData?.chapters || [])].reverse()
         : (detailsData?.chapters || [])
+
+
+    //If the user is authenticated, He can see the Like Manwha
+    const likeManwha = async () => {
+        try {
+            let res = await fetch('/site/LikeManwha', {
+                method: "POST",
+                body: JSON.stringify({ manwhaId: manwhaid, image: detailsData?.image })
+            })
+            let data = await res.json()
+
+            //Call tong function na to, para parang real time nagbabago data, pero ni rerefetch lang yung current state nung authUser
+            getAuthUserFunction()
+        } catch (error) {
+            console.log(error)
+        }
+    }
 
     return (
         <div className='bg-gray-900 w-full pb-[50px] px-[5%] md:px-[10%] lg:px-[20%] relative'>
@@ -115,10 +138,40 @@ const DetailsPage = ({ manwhaid }: { manwhaid: string }) => {
             </div>
 
             {/* Summary Header */}
-            <div className="relative inline-block text-[22px] my-[40px]">
-                <span className="text-white font-bold uppercase">Summary</span>
-                <div className="absolute left-0 right-0 -bottom-1 h-1 bg-[#d7af57] rounded-full"></div>
+
+            <div className='w-[500px]  flex items-center justify-start gap-[20px]'>
+
+                <div className="relative inline-block text-[22px] my-[40px] flex flex-row">
+                    <div>
+                        <span className="text-white font-bold uppercase">Summary</span>
+                        <div className="absolute left-0 right-0 -bottom-1 h-1 bg-[#d7af57] rounded-full"></div>
+
+                    </div>
+                </div>
+
+                {authUser && (
+                    <div
+                        onClick={likeManwha}
+                        className={`duration-200 p-[8px] cursor-pointer rounded-lg font-bold text-gray-900 ${authUser.likedManwha?.some((item: any) => item.manwhaId === manwhaid)
+                            ? 'bg-gray-500 hover:bg-gray-500/80 '
+                            : 'bg-[#d7af57] hover:bg-[#d7af57]/80'
+                            }`}
+                    >
+                        {authUser.likedManwha?.some((item: any) => item.manwhaId === manwhaid) ? (
+                            <div className='flex flex-row items-center justify-center gap-[5px]'>
+                                Unlike Manwha
+                                <HeartOff className="w-5 h-5" />
+                            </div>
+                        ) : (
+                            <div className='flex flex-row items-center justify-center gap-[5px]'>
+                                Like Manwha
+                                <Heart className="w-5 h-5" />
+                            </div>
+                        )}
+                    </div>
+                )}
             </div>
+
 
             {/* Summary Text */}
             <div className='text-zinc-500'>

@@ -22,7 +22,6 @@ const Page = () => {
             setError(data?.error)
             return
         }
-        console.log(data)
         router.push('/home/1')
     }
 

@@ -16,8 +16,8 @@ const useAuthStore = create<AuthStore>((set, get) => ({
             let res = await fetch('/users/me')
             if (!res.ok) return { error: 'Error User is not logged in or invalid token.' }
             const data = await res.json()
-            console.log(data)
             set({ authUser: data })
+            console.log(data)
             return data
         } catch (error) {
             console.log(error)

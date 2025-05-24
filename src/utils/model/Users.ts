@@ -12,7 +12,13 @@ const userSchema = new mongoose.Schema({
     password: {
         type: String,
         required: true
-    }
+    },
+    likedManwha: [
+        {
+            manwhaId: String,
+            image: String
+        }
+    ]
 })
 
 const User = mongoose.models.User || mongoose.model('User', userSchema)
