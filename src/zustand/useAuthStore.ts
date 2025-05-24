@@ -17,7 +17,8 @@ const useAuthStore = create<AuthStore>((set, get) => ({
             if (!res.ok) return { error: 'Error User is not logged in or invalid token.' }
             const data = await res.json()
             set({ authUser: data })
-            // console.log(data) on for debugging
+            //on for debugging
+            // console.log(data) 
             return data
         } catch (error) {
             console.log(error)

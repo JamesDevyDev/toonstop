@@ -114,17 +114,22 @@ const Drawer = () => {
                     {authUser &&
                         <div className='w-full   flex items-center justify-center  flex-col mt-[25px]'>
 
-                            <div className="avatar">
-                                <div className="w-19 rounded-full">
-                                    <img src={authUser?.avatar} />
+
+                            <div className='p-[10px] w-full border-black border-1 rounded-md flex items-center justify-center flex-col mb-[10px] bg-black/20'>
+                                <div className='w-[90px] h-[90px] rounded-full flex items-center justify-center bg-black'>
+                                    <div className="avatar">
+                                        <div className="w-19 rounded-full">
+                                            <img src={authUser?.avatar} />
+                                        </div>
+                                    </div>
                                 </div>
+                                <div className='w-full flex items-center justify-center font-bold text-black text-[22px]'>{authUser?.username}</div>
                             </div>
-                            <div className='w-full flex items-center justify-center font-bold text-black text-[22px] pb-[10px]'>{authUser?.username}</div>
 
 
                             <div className='w-full  flex flex-col text-[15px] font-bold'>
-                                <Link href='/likedPage' className='text-black w-full h-[50px] flex items-center justify-start cursor-pointer border-t border-black hover:text-black/50 duration-200'>Liked Manwha</Link>
-                                <div className='text-black w-full h-[50px] flex items-center justify-start cursor-pointer border-t border-black hover:text-black/50 duration-200'>User Settings</div>
+                                <Link href='/liked-page' className='text-black w-full h-[50px] flex items-center justify-start cursor-pointer border-t border-black hover:text-black/50 duration-200'>Liked Manwha</Link>
+                                <Link href='/user-settings' className='text-black w-full h-[50px] flex items-center justify-start cursor-pointer border-t border-black hover:text-black/50 duration-200'>User Settings</Link>
                                 <div onClick={() => LogoutFunction()} className='text-black w-full h-[50px] flex items-center justify-start cursor-pointer border-t border-b border-black hover:text-black/50 duration-200'>Logout</div>
                             </div>
                         </div>}

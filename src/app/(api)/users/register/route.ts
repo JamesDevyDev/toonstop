@@ -9,9 +9,14 @@ export const POST = async (request: Request) => {
     const body = await request.json()
     const { username, password } = body
 
-    const ifExist = await User.findOne({ username: username })
-    if (ifExist) return NextResponse.json("Username already exist.", { status: 400 })
+    if (password.length < 6) {
+        return NextResponse.json("Password must be at least 6 characters long.", { status: 400 })
+    }
 
+    const ifExist = await User.findOne({ username: username })
+    if (ifExist) {
+        return NextResponse.json("Username already exists.", { status: 400 })
+    }
 
     const salt = await bcrypt.genSalt(10)
     const hashedPassword = await bcrypt.hash(password, salt)
