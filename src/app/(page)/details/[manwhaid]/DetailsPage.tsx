@@ -6,6 +6,7 @@ import useAuthStore from "@/zustand/useAuthStore"
 import Link from "next/link"
 import { useRouter } from "next/navigation"
 import { Heart, HeartOff } from 'lucide-react'
+import DiscussionArea from "@/components/details/DiscussionArea"
 
 
 
@@ -17,6 +18,8 @@ const DetailsPage = ({ manwhaid }: { manwhaid: string }) => {
     const [isReversed, setIsReversed] = useState(false)
     const [isLoading, setIsLoading] = useState(true)
     const router = useRouter()
+
+    const [isChapter, setIsChapter] = useState<boolean>(true)
 
     useEffect(() => {
         const fetchData = async () => {
@@ -187,9 +190,30 @@ const DetailsPage = ({ manwhaid }: { manwhaid: string }) => {
             </div>
 
             {/* Chapters Header */}
-            <div className="relative inline-block text-[22px] mt-[30px]">
-                <span className="text-white font-bold uppercase">Chapters</span>
-                <div className="absolute left-0 right-0 -bottom-1 h-1 bg-[#d7af57] rounded-full"></div>
+            <div className='flex gap-[15px] mb-[15px]'>
+                {/* Chapters */}
+                <div
+                    className={`relative inline-block text-[22px] mt-[30px] cursor-pointer rounded-lg px-4 py-2 ${isChapter ? 'bg-[#d7af57]' : 'bg-gray-500/30'
+                        }`}
+                    onClick={() => setIsChapter(true)}
+                >
+                    <span className="text-white font-bold uppercase">Chapters</span>
+                    {isChapter && (
+                        <div className="absolute left-0 right-0 bottom-[-10px] h-1 bg-[#d7af57] rounded-full"></div>
+                    )}
+                </div>
+
+                {/* Discussions */}
+                <div
+                    className={`relative inline-block text-[22px] mt-[30px] cursor-pointer rounded-lg px-4 py-2 ${!isChapter ? 'bg-[#d7af57]' : 'bg-gray-500/30'
+                        }`}
+                    onClick={() => setIsChapter(false)}
+                >
+                    <span className="text-white font-bold uppercase">Discussions</span>
+                    {!isChapter && (
+                        <div className="absolute left-0 right-0 bottom-[-10px] h-1 bg-[#d7af57] rounded-full"></div>
+                    )}
+                </div>
             </div>
 
             {/* Reverse Toggle */}
@@ -203,22 +227,27 @@ const DetailsPage = ({ manwhaid }: { manwhaid: string }) => {
             </div>
 
             {/* Chapter List */}
-            {isLoading ? (
-                <div className="skeleton h-32 w-full bg-gray-800 rounded-lg mt-4"></div>
+            {isChapter ? (
+                isLoading ? (
+                    <div className="skeleton h-32 w-full bg-gray-800 rounded-lg mt-4" ></div>
+                ) : (
+                    <div className='w-full bg-gray-700/60 p-[15px] grid grid-cols-1 md:grid-cols-2 gap-4 relative rounded-lg'>
+                        {chaptersToShow?.map((chapter, index) => (
+                            <Link href={`/chapter/${manwhaid}/${chapter?.chapterId}`} key={index} className='rounded-lg overflow-hidden'>
+                                <div className='w-full h-[60px] flex items-center flex-col justify-center relative group'>
+                                    <div className='font-bold group-hover:text-[#d7af57]'>{chapter?.name}</div>
+                                    <span className='text-[12px] text-zinc-500'>{chapter?.releaseDate}</span>
+                                </div>
+                                <div className='w-full bg-[#d7af57] h-[3px]'></div>
+                            </Link>
+                        ))}
+                    </div>
+                )
             ) : (
-                <div className='w-full bg-gray-700/60 p-[15px] grid grid-cols-1 md:grid-cols-2 gap-4 relative rounded-lg'>
-                    {chaptersToShow?.map((chapter, index) => (
-                        <Link href={`/chapter/${manwhaid}/${chapter?.chapterId}`} key={index} className='rounded-lg overflow-hidden'>
-                            <div className='w-full h-[60px] flex items-center flex-col justify-center relative group'>
-                                <div className='font-bold group-hover:text-[#d7af57]'>{chapter?.name}</div>
-                                <span className='text-[12px] text-zinc-500'>{chapter?.releaseDate}</span>
-                            </div>
-                            <div className='w-full bg-[#d7af57] h-[3px]'></div>
-                        </Link>
-                    ))}
-                </div>
+                // { /* Discussion Area */}
+                <DiscussionArea manwhaid={manwhaid} />
             )}
-        </div>
+        </div >
     )
 }
 

@@ -111,28 +111,27 @@ const Drawer = () => {
                         </div>
                     }
 
-                    {authUser &&
-                        <div className='w-full   flex items-center justify-center  flex-col mt-[25px]'>
+                    {authUser && <div className='w-full   flex items-center justify-center  flex-col mt-[25px]'>
 
 
-                            <div className='p-[10px] w-full border-black border-1 rounded-md flex items-center justify-center flex-col mb-[10px] bg-black/20'>
-                                <div className='w-[90px] h-[90px] rounded-full flex items-center justify-center bg-black'>
-                                    <div className="avatar">
-                                        <div className="w-19 rounded-full">
-                                            <img src={authUser?.avatar} />
-                                        </div>
+                        <div className='p-[10px] w-full border-black border-1 rounded-md flex items-center justify-center flex-col mb-[10px] bg-black/20'>
+                            <div className='w-[90px] h-[90px] rounded-full flex items-center justify-center bg-black'>
+                                <div className="avatar">
+                                    <div className="w-19 rounded-full">
+                                        <img src={authUser?.avatar} />
                                     </div>
                                 </div>
-                                <div className='w-full flex items-center justify-center font-bold text-black text-[22px]'>{authUser?.username}</div>
                             </div>
+                            <div className='w-full flex items-center justify-center font-bold text-black text-[22px]'>{authUser?.username}</div>
+                        </div>
 
 
-                            <div className='w-full  flex flex-col text-[15px] font-bold'>
-                                <Link href='/liked-page' className='text-black w-full h-[50px] flex items-center justify-start cursor-pointer border-t border-black hover:text-black/50 duration-200'>Liked Manwha</Link>
-                                <Link href='/user-settings' className='text-black w-full h-[50px] flex items-center justify-start cursor-pointer border-t border-black hover:text-black/50 duration-200'>User Settings</Link>
-                                <div onClick={() => LogoutFunction()} className='text-black w-full h-[50px] flex items-center justify-start cursor-pointer border-t border-b border-black hover:text-black/50 duration-200'>Logout</div>
-                            </div>
-                        </div>}
+                        <div className='w-full  flex flex-col text-[15px] font-bold'>
+                            <Link href='/liked-page' className='text-black w-full h-[50px] flex items-center justify-start cursor-pointer border-t border-black hover:text-black/50 duration-200'>Liked Manwha</Link>
+                            <Link href='/user-settings' className='text-black w-full h-[50px] flex items-center justify-start cursor-pointer border-t border-black hover:text-black/50 duration-200'>User Settings</Link>
+                            <div onClick={() => LogoutFunction()} className='text-black w-full h-[50px] flex items-center justify-start cursor-pointer border-t border-b border-black hover:text-black/50 duration-200'>Logout</div>
+                        </div>
+                    </div>}
 
                     <div className='w-full flex items-center justify-center mt-[25px] flex-col gap-[15px]'>
                         <div
@@ -144,16 +143,20 @@ const Drawer = () => {
                         </div>
                     </div>
 
+                    <div className='w-full  flex flex-col text-[15px] font-bold'>
+                        <Link href='/forum' className='text-black w-full h-[50px] flex items-center justify-start cursor-pointer border-b border-black hover:text-black/50 duration-200'>Forum</Link>
+                    </div>
+
                     <div className='flex items-center justify-center flex-col absolute left-[50%] translate-x-[-50%] bottom-[1%]'>
                         <Link
                             title='https://github.com/JamesDevyDev'
                             href='https://github.com/JamesDevyDev'
-                            className='w-[50px] h-[50px] bg-gray-900 rounded-lg flex items-center justify-center cursor-pointer'
+                            className='w-[35px] h-[35px] bg-gray-900 rounded-lg flex items-center justify-center cursor-pointer'
                         >
                             <Github color={'#d7af57'} />
                         </Link>
-                        <div className='text-[9px] text-center text-black'>
-                            show support by following my github.
+                        <div className='text-[9px] text-center text-black mt-[5px]'>
+                            show love by following my github.
                         </div>
                     </div>
                 </ul>

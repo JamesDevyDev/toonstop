@@ -24,12 +24,12 @@ const Footer = () => {
                         <Link
                             title='https://github.com/JamesDevyDev'
                             href='https://github.com/JamesDevyDev'
-                            className='w-[50px] h-[50px] bg-gray-900 rounded-lg flex items-center justify-center cursor-pointer'
+                            className='w-[35px] h-[35px] bg-gray-900 rounded-lg flex items-center justify-center cursor-pointer'
                         >
                             <Github color={'#d7af57'}/>
                         </Link>
-                        <div className='text-[9px] text-center text-black'>
-                            show support by following my github.
+                        <div className='text-[9px] text-center text-black mt-[5px]'>
+                            show love by following my github.
                         </div>
                     </div>
 
