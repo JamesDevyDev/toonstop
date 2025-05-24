@@ -19,10 +19,10 @@ const HomeCards = () => {
           {card?.status !== '' && (
             <div
               className={`z-[1] text-[12px] px-[2%] py-[1%] rounded-lg absolute font-bold ${card?.status === "HOT"
-                  ? "bg-red-500"
-                  : card?.status === "NEW"
-                    ? "bg-yellow-500"
-                    : "bg-gray-500"
+                ? "bg-red-500"
+                : card?.status === "NEW"
+                  ? "bg-yellow-500"
+                  : "bg-gray-500"
                 }`}
             >
               {card?.status}
@@ -45,7 +45,12 @@ const HomeCards = () => {
               {card.latestEp.map((latestep, index) => (
                 <div key={index} className="w-full bg-gray-700/60 p-2 flex justify-between items-center rounded-lg text-white">
                   <Link href={`/chapter/${card.manwhaId}/${latestep.title.split(" ")[1]}`} className='text-[13px] font-bold cursor-pointer hover:text-[#d7af57]'>{latestep.title}</Link>
-                  <span className="text-[10px] text-zinc-500">{latestep.date}</span>
+                  <span className="text-[10px] text-zinc-500">
+                    {latestep.date === 'UP' ?
+                      <div className='w-[20px] h-[20px] bg-yellow-500 text-black flex items-center justify-center rounded-full font-bold'>UP</div>
+                      :
+                      <div>{latestep?.date}</div>
+                    }</span>
                 </div>
               ))}
             </div>
