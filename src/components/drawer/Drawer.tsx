@@ -8,6 +8,9 @@ import Link from 'next/link'
 
 const Drawer = () => {
 
+    const { mature, setMature } = useManwhaStore()
+
+
     const [isLoadingViews, setIsLoadingViews] = useState(false)
     const [isLoadingReads, setIsLoadingReads] = useState(false)
 
@@ -28,6 +31,24 @@ const Drawer = () => {
         getAuthUserFunction()
         fetchCounts();
     }, []);
+
+
+    useEffect(() => {
+        const fetchCookie = async () => {
+            const res = await fetch('/api/matureCookie');
+            const data = await res.json();
+        }
+        fetchCookie()
+    }, [])
+
+    const matureSet = async () => {
+        const res = await fetch('/api/matureCookie', {
+            method: 'POST'
+        });
+        const data = await res.json();
+        setMature(data?.value)
+
+    };
 
     return (
         <div className="drawer">
@@ -107,8 +128,15 @@ const Drawer = () => {
                             </div>
                         </div>}
 
-
-
+                    <div className='w-full flex items-center justify-center mt-[25px]'>
+                        <div
+                            onClick={() => {
+                                matureSet()
+                            }}
+                            className={` relative cursor-pointer w-[80px] h-[30px]  border  rounded-lg text-[12px] flex items-center justify-center ${mature == 0 ? 'bg-green-500/10 border-green-500 text-green-500' : 'bg-red-500/10 border-red-500 text-red-500'} `}>
+                            {`NSFW ${mature == 0 ? 'OFF' : 'ON'}`} •
+                        </div>
+                    </div>
                 </ul>
             </div>
         </div>
