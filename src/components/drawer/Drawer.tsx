@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { Menu } from 'lucide-react'
+import { Menu, Github } from 'lucide-react'
 import useManwhaStore from '@/zustand/useManwhaStore'
 import useAuthStore from '@/zustand/useAuthStore'
 
@@ -129,13 +129,26 @@ const Drawer = () => {
                             </div>
                         </div>}
 
-                    <div className='w-full flex items-center justify-center mt-[25px]'>
+                    <div className='w-full flex items-center justify-center mt-[25px] flex-col gap-[15px]'>
                         <div
                             onClick={() => {
                                 matureSet()
                             }}
                             className={` relative cursor-pointer w-[80px] h-[30px]  border  rounded-lg text-[12px] flex items-center justify-center ${mature == 0 ? 'bg-black/20 border-green-500 text-green-500' : 'bg-black/20 border-red-500 text-red-500'} `}>
                             {`NSFW ${mature == 0 ? 'OFF' : 'ON'}`} •
+                        </div>
+                    </div>
+
+                    <div className='flex items-center justify-center flex-col absolute left-[50%] translate-x-[-50%] bottom-[1%]'>
+                        <Link
+                            title='https://github.com/JamesDevyDev'
+                            href='https://github.com/JamesDevyDev'
+                            className='w-[50px] h-[50px] bg-gray-900 rounded-lg flex items-center justify-center cursor-pointer'
+                        >
+                            <Github color={'#d7af57'} />
+                        </Link>
+                        <div className='text-[9px] text-center text-black'>
+                            show support by following my github.
                         </div>
                     </div>
                 </ul>
