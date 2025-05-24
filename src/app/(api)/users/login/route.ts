@@ -32,7 +32,7 @@ export const POST = async (request: Request) => {
 
     response.cookies.set('jwt', token, {
         httpOnly: true,
-        secure: false,
+        secure: true,
         path: '/',
         maxAge: 60 * 60 * 24 * 14
     })
