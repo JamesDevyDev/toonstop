@@ -10,7 +10,7 @@ export const GET = async (request: Request) => {
             .populate('commenterId', 'username avatar')
             .sort({ createdAt: -1 });
 
-        return NextResponse.json(getAllRecentPost, { status: 200 })
+        return new Response(JSON.stringify(getAllRecentPost), { status: 200 })
     } catch (error) {
         return new Response('Failed to fetch suggestions', { status: 500 })
     }
