@@ -3,7 +3,7 @@ import Comment from "@/utils/model/Comment"
 import User from "@/utils/model/Users"
 import { NextResponse } from "next/server"
 
-export const GET = async () => {
+export const GET = async (request: Request) => {
     await connectDb()
     try {
         const getAllRecentPost = await Comment.find({})
