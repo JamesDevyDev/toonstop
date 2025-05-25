@@ -160,6 +160,9 @@ const Drawer = () => {
                         <div className='text-[9px] text-center text-black mt-[5px]'>
                             show love by following my github.
                         </div>
+                        <p className='text-[10px] text-gray-700'>
+                            API : <span className='underline'><Link href='https://scrapergo.vercel.app'>scrapergo.vercel.app</Link></span>
+                        </p>
                     </div>
                 </ul>
             </div>
