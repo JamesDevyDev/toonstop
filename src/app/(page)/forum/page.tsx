@@ -6,7 +6,7 @@ import SuggestionsComponent from '@/components/forum/Suggestion'
 import Link from 'next/link'
 
 const Page = () => {
-    const { getRecentComments, ForumComments } = useCommentStore()
+    const { getLatestComment, ForumComments } = useCommentStore()
 
     const [choice, setChoice] = useState<string>('comment')
     const [loading, setLoading] = useState<boolean>(true)
@@ -14,7 +14,7 @@ const Page = () => {
     useEffect(() => {
         const fetchComments = async () => {
             setLoading(true)
-            await getRecentComments()
+            await getLatestComment()
             setLoading(false)
         }
 

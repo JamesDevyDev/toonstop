@@ -21,7 +21,7 @@ interface CommentStore {
 
     //For Forums Page
     ForumComments: Comment[] | null;
-    getRecentComments: () => Promise<void>
+    getLatestComment: () => Promise<void>
 
     suggestionComments: Comment[] | null;
     getSuggestionComments: () => Promise<void>
@@ -44,9 +44,9 @@ const useCommentStore = create<CommentStore>((set, get) => ({
 
     //For Forums Page
     ForumComments: null,
-    getRecentComments: async () => {
+    getLatestComment: async () => {
         try {
-            let res = await fetch(`/discussion/comment/latest-comment`)
+            let res = await fetch(`/discussion/comment/latestComment`)
             let data = await res.json()
             console.log(data)
             set({ ForumComments: data })
