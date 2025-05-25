@@ -101,13 +101,18 @@ const Drawer = () => {
                     </div>
 
                     {!authUser &&
-                        <div className='w-full h-[100px]  flex items-center justify-center gap-[10px] flex-row '>
-                            <Link href='/auth/register' className='w-[100px] h-[30px] flex items-center justify-center rounded-md bg-black/50 border-2 text-black hover:bg-[#d7af57] cursor-pointer hover:font-bold'>
-                                Register
-                            </Link>
-                            <Link href='/auth/login' className='w-[100px] h-[30px] flex items-center justify-center rounded-md bg-black/50 border-2 text-black hover:bg-[#d7af57] cursor-pointer hover:font-bold'>
-                                Login
-                            </Link>
+                        <div>
+                            <div className='w-full h-[100px]  flex items-center justify-center gap-[10px] flex-row '>
+                                <Link href='/auth/register' className='w-[100px] h-[30px] flex items-center justify-center rounded-md bg-black/50 border-2 text-black hover:bg-[#d7af57] cursor-pointer hover:font-bold'>
+                                    Register
+                                </Link>
+                                <Link href='/auth/login' className='w-[100px] h-[30px] flex items-center justify-center rounded-md bg-black/50 border-2 text-black hover:bg-[#d7af57] cursor-pointer hover:font-bold'>
+                                    Login
+                                </Link>
+                            </div>
+                            <div className='w-full  flex flex-col text-[15px] font-bold'>
+                                <Link href='/forum' className='text-black w-full h-[50px] flex items-center justify-start cursor-pointer border-b border-t border-black hover:text-black/50 duration-200'>Forum</Link>
+                            </div>
                         </div>
                     }
 
@@ -127,8 +132,11 @@ const Drawer = () => {
 
 
                         <div className='w-full  flex flex-col text-[15px] font-bold'>
+
+
                             <Link href='/liked-page' className='text-black w-full h-[50px] flex items-center justify-start cursor-pointer border-t border-black hover:text-black/50 duration-200'>Liked Manwha</Link>
                             <Link href='/user-settings' className='text-black w-full h-[50px] flex items-center justify-start cursor-pointer border-t border-black hover:text-black/50 duration-200'>User Settings</Link>
+                            <Link href='/forum' className='text-black w-full h-[50px] flex items-center justify-start cursor-pointer border-t border-black hover:text-black/50 duration-200'>Forum</Link>
                             <div onClick={() => LogoutFunction()} className='text-black w-full h-[50px] flex items-center justify-start cursor-pointer border-t border-b border-black hover:text-black/50 duration-200'>Logout</div>
                         </div>
                     </div>}
@@ -141,10 +149,6 @@ const Drawer = () => {
                             className={` relative cursor-pointer w-[80px] h-[30px]  border  rounded-lg text-[12px] flex items-center justify-center ${mature == 0 ? 'bg-black/20 border-green-500 text-green-500' : 'bg-black/20 border-red-500 text-red-500'} `}>
                             {`NSFW ${mature == 0 ? 'OFF' : 'ON'}`} •
                         </div>
-                    </div>
-
-                    <div className='w-full  flex flex-col text-[15px] font-bold'>
-                        <Link href='/forum' className='text-black w-full h-[50px] flex items-center justify-start cursor-pointer border-b border-black hover:text-black/50 duration-200'>Forum</Link>
                     </div>
 
                     <div className='flex items-center justify-center flex-col absolute left-[50%] translate-x-[-50%] bottom-[1%]'>

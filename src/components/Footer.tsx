@@ -16,7 +16,7 @@ const Footer = () => {
                     </Link>
                 </div>
                 <div className='h-full flex items-center justify-between w-full'>
-                    <p className='text-sm text-gray-700'>
+                    <p className='text-[10px] text-gray-700'>
                         This site doesn't store any data from third-party services.
                     </p>
 
