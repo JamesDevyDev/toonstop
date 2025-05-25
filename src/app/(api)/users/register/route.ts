@@ -9,6 +9,10 @@ export const POST = async (request: Request) => {
     const body = await request.json()
     const { username, password } = body
 
+    if (username.length > 16) {
+        return NextResponse.json("Username must be at most 16 characters long.", { status: 400 })
+    }
+
     if (password.length < 6) {
         return NextResponse.json("Password must be at least 6 characters long.", { status: 400 })
     }
