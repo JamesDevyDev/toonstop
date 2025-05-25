@@ -8,7 +8,7 @@ import Link from 'next/link'
 const Page = () => {
     const { getLatestComment, ForumComments } = useCommentStore()
 
-    const [choice, setChoice] = useState<string>('comment')
+    const [choice, setChoice] = useState<string>('suggestions')
     const [loading, setLoading] = useState<boolean>(true)
 
     useEffect(() => {

@@ -3,7 +3,7 @@ import mongoose from "mongoose";
 const suggestionSchema = new mongoose.Schema({
     commenterId: {
         type: mongoose.Schema.Types.ObjectId,
-        ref: 'User',
+        ref: "Users",
         required: true
     },
     text: {

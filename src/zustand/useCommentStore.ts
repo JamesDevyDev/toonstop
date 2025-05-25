@@ -29,7 +29,7 @@ interface CommentStore {
 
 const useCommentStore = create<CommentStore>((set, get) => ({
     //Para sa DETAILS PAGE comments
-    currentComment: null,
+    currentComment: [],
     getCurrentComments: async ({ manwhaId }) => {
         try {
             let res = await fetch(`/discussion/comment/${manwhaId}`)
@@ -43,7 +43,7 @@ const useCommentStore = create<CommentStore>((set, get) => ({
 
 
     //For Forums Page
-    ForumComments: null,
+    ForumComments: [],
     getLatestComment: async () => {
         try {
             let res = await fetch(`/discussion/latestComment`)
@@ -54,7 +54,7 @@ const useCommentStore = create<CommentStore>((set, get) => ({
             console.log(error)
         }
     },
-    suggestionComments: null,
+    suggestionComments: [],
     getSuggestionComments: async () => {
         try {
             let res = await fetch(`/discussion/suggestion`)
