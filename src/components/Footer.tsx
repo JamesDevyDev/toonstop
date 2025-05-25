@@ -16,6 +16,9 @@ const Footer = () => {
                     </Link>
                 </div>
                 <div className='h-full flex items-center justify-between w-full'>
+                    <p className='text-[10px] text-gray-700'>
+                    </p>
+
                     <div className='flex items-center justify-center flex-col'>
                         <Link
                             title='https://github.com/JamesDevyDev'
