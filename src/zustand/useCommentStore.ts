@@ -46,7 +46,7 @@ const useCommentStore = create<CommentStore>((set, get) => ({
     ForumComments: null,
     getLatestComment: async () => {
         try {
-            let res = await fetch(`/discussion/comment/latestComment`)
+            let res = await fetch(`/discussion/latestComment`)
             let data = await res.json()
             console.log(data)
             set({ ForumComments: data })
@@ -57,7 +57,7 @@ const useCommentStore = create<CommentStore>((set, get) => ({
     suggestionComments: null,
     getSuggestionComments: async () => {
         try {
-            let res = await fetch(`/discussion/comment/suggestion`)
+            let res = await fetch(`/discussion/suggestion`)
             let data = await res.json()
             console.log(data)
             set({ suggestionComments: data })

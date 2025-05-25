@@ -18,7 +18,9 @@ const Page = () => {
             setLoading(false)
         }
 
-        fetchComments()
+        setTimeout(() => {
+            fetchComments()
+        },1000)
     }, [])
 
     return (
