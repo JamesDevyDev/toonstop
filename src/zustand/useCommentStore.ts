@@ -20,10 +20,10 @@ interface CommentStore {
     getCurrentComments: ({ manwhaId }: { manwhaId: string }) => Promise<void>;
 
     //For Forums Page
-    ForumComments: any | null;
+    ForumComments: Comment[] | null;
     getLatestComment: () => Promise<void>
 
-    suggestionComments: any | null;
+    suggestionComments: Comment[] | null;
     getSuggestionComments: () => Promise<void>
 }
 
