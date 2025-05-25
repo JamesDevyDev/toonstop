@@ -50,7 +50,7 @@ const Page = () => {
                             </>
                         )}
 
-                        {choice === 'comment' && !loading && ForumComments?.map((comment, index) => (
+                        {choice === 'comment' && !loading && ForumComments?.map((comment:any, index:any) => (
                             <div
                                 key={index}
                                 className="bg-gray-500/70 rounded-xl p-4 shadow-md w-full text-sm"
