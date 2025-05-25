@@ -17,8 +17,7 @@ const Footer = () => {
                 </div>
                 <div className='h-full flex items-center justify-between w-full'>
                     <p className='text-[10px] text-gray-700'>
-                        This site doesn't store any data from any third-party services.<br></br>
-                        API USED : <span className='underline'><Link href='https://scrapergo.vercel.app'>scrapergo.vercel.app</Link></span>
+                        API : <span className='underline'><Link href='https://scrapergo.vercel.app'>scrapergo.vercel.app</Link></span>
                     </p>
 
                     <div className='flex items-center justify-center flex-col'>
