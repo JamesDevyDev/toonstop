@@ -100,21 +100,19 @@ const Drawer = () => {
                         </div>
                     </div>
 
-                    {!authUser &&
-                        <div>
-                            <div className='w-full h-[100px]  flex items-center justify-center gap-[10px] flex-row '>
-                                <Link href='/auth/register' className='w-[100px] h-[30px] flex items-center justify-center rounded-md bg-black/50 border-2 text-black hover:bg-[#d7af57] cursor-pointer hover:font-bold'>
-                                    Register
-                                </Link>
-                                <Link href='/auth/login' className='w-[100px] h-[30px] flex items-center justify-center rounded-md bg-black/50 border-2 text-black hover:bg-[#d7af57] cursor-pointer hover:font-bold'>
-                                    Login
-                                </Link>
-                            </div>
-                            <div className='w-full  flex flex-col text-[15px] font-bold'>
-                                <Link href='/forum' className='text-black w-full h-[50px] flex items-center justify-start cursor-pointer border-b border-t border-black hover:text-black/50 duration-200'>Forum</Link>
-                            </div>
+                    {!authUser && <div>
+                        <div className='w-full h-[100px]  flex items-center justify-center gap-[10px] flex-row '>
+                            <Link href='/auth/register' className='w-[100px] h-[30px] flex items-center justify-center rounded-md bg-black/50 border-2 text-black hover:bg-[#d7af57] cursor-pointer hover:font-bold'>
+                                Register
+                            </Link>
+                            <Link href='/auth/login' className='w-[100px] h-[30px] flex items-center justify-center rounded-md bg-black/50 border-2 text-black hover:bg-[#d7af57] cursor-pointer hover:font-bold'>
+                                Login
+                            </Link>
                         </div>
-                    }
+                        <div className='w-full  flex flex-col text-[15px] font-bold'>
+                            <Link href='/forum' className='text-black w-full h-[50px] flex items-center justify-start cursor-pointer border-b border-t border-black hover:text-black/50 duration-200'>Forum</Link>
+                        </div>
+                    </div>}
 
                     {authUser && <div className='w-full   flex items-center justify-center  flex-col mt-[25px]'>
 

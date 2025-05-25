@@ -17,7 +17,8 @@ const Footer = () => {
                 </div>
                 <div className='h-full flex items-center justify-between w-full'>
                     <p className='text-[10px] text-gray-700'>
-                        This site doesn't store any data from third-party services.
+                        This site doesn't store any data from any third-party services.<br></br>
+                        API USED : <span className='underline'><Link href='https://scrapergo.vercel.app'>scrapergo.vercel.app</Link></span>
                     </p>
 
                     <div className='flex items-center justify-center flex-col'>
@@ -26,7 +27,7 @@ const Footer = () => {
                             href='https://github.com/JamesDevyDev'
                             className='w-[35px] h-[35px] bg-gray-900 rounded-lg flex items-center justify-center cursor-pointer'
                         >
-                            <Github color={'#d7af57'}/>
+                            <Github color={'#d7af57'} />
                         </Link>
                         <div className='text-[9px] text-center text-black mt-[5px]'>
                             show love by following my github.
