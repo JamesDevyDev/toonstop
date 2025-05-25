@@ -8,7 +8,7 @@ import Link from 'next/link'
 const Page = () => {
     const { getLatestComment, ForumComments } = useCommentStore()
 
-    const [choice, setChoice] = useState<string>('suggestions')
+    const [choice, setChoice] = useState<string>('comment')
     const [loading, setLoading] = useState<boolean>(true)
 
     useEffect(() => {
@@ -18,9 +18,9 @@ const Page = () => {
             setLoading(false)
         }
 
-        setTimeout(() => {
-            fetchComments()
-        },1000)
+
+        fetchComments()
+
     }, [])
 
     return (
@@ -50,7 +50,7 @@ const Page = () => {
                             </>
                         )}
 
-                        {choice === 'comment' && !loading && ForumComments?.map((comment:any, index:any) => (
+                        {choice === 'comment' && !loading && ForumComments?.map((comment: any, index: any) => (
                             <div
                                 key={index}
                                 className="bg-gray-500/70 rounded-xl p-4 shadow-md w-full text-sm"

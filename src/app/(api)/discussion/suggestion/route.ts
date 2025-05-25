@@ -2,7 +2,7 @@ import { NextResponse } from "next/server"
 import { getAuthenticatedUser } from "@/utils/verifyUser"
 
 import connectDb from "@/utils/connectDb"
-import User from "@/utils/model/Users"
+import Users from "@/utils/model/Users"
 import Suggestion from "@/utils/model/Suggestions"
 
 export const GET = async (request: Request) => {
@@ -29,7 +29,7 @@ export const POST = async (request: Request) => {
     if (user?.error)
         return NextResponse.json('User is not authenticated or invalid token.', { status: 400 })
 
-    const loggedInUser = await User.findById(user._id)
+    const loggedInUser = await Users.findById(user._id)
     if (!loggedInUser)
         return NextResponse.json('User not found.', { status: 404 })
 

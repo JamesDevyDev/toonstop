@@ -5,7 +5,7 @@ import { getAuthenticatedUser } from "@/utils/verifyUser";
 import connectDb from "@/utils/connectDb"
 
 import User from "@/utils/model/Users";
-import Comment from "@/utils/model/Comment";
+import Comment from "@/utils/model/Comments";
 
 
 export const GET = async (request: Request, {
