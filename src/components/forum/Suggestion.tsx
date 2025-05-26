@@ -28,7 +28,7 @@ const SuggestionsComponent = () => {
 
     setLoading(true)
     try {
-      const res = await fetch('/discussion/comment/suggestion', {
+      const res = await fetch('/discussion/suggestion', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ text: newComment }),
